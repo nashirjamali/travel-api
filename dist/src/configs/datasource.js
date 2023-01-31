@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.datasource = void 0;
 const typeorm_1 = require("typeorm");
 const dotenv_1 = __importDefault(require("dotenv"));
+const trips_entity_1 = __importDefault(require("../entities/trips.entity"));
 dotenv_1.default.config();
 const { DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env;
 const DB_PORT = Number(process.env.DB_PORT) || 3306;
@@ -16,7 +17,7 @@ exports.datasource = new typeorm_1.DataSource({
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_NAME,
-    entities: [__dirname + '../entities/*.entity.{js,ts}'],
+    entities: [trips_entity_1.default],
     logging: true,
     synchronize: true,
 });
