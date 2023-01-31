@@ -16,7 +16,7 @@ exports.datasource = new typeorm_1.DataSource({
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_NAME,
-    entities: ['src/entities/*.ts'],
+    entities: [__dirname + '../entities/*.entity.{js,ts}'],
     logging: true,
     synchronize: true,
 });
