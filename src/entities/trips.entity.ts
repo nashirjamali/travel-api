@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import Wishlist from './wishlists.entity';
 
 @Entity()
 export default class Trip {
@@ -28,4 +29,13 @@ export default class Trip {
 
   @Column({ type: 'varchar', length: '255' })
   photo_cover: string;
+
+  @Column({ type: 'longtext' })
+  description: string;
+
+  @Column({ type: 'boolean', default: false })
+  is_popular: boolean;
+
+  @OneToOne(() => Wishlist, (wishlist) => wishlist.id)
+  wishlist: Wishlist;
 }

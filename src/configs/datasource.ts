@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
 import Trip from '../entities/trips.entity';
+import Wishlist from '../entities/wishlists.entity';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ export const datasource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_NAME,
-  entities: [Trip],
+  entities: [Trip, Wishlist],
   logging: true,
   synchronize: true,
 });
