@@ -1,22 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne } from 'typeorm';
 import Wishlist from './wishlists.entity';
+import Destination from './destinations.entity';
 
 @Entity()
 export default class Trip {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ type: 'varchar', length: '255' })
-  destination_name: string;
-
-  @Column({ type: 'varchar', length: '255' })
-  destination_city: string;
-
-  @Column({ type: 'varchar', length: '255' })
-  destination_region: string;
-
-  @Column({ type: 'varchar', length: '255' })
-  destination_country: string;
 
   @Column({ type: 'varchar', length: '255' })
   minimum_person: number;
@@ -38,4 +27,7 @@ export default class Trip {
 
   @OneToOne(() => Wishlist, (wishlist) => wishlist.id)
   wishlist: Wishlist;
+
+  @ManyToOne(() => Destination, (destination) => destination.id)
+  destination: Destination;
 }
