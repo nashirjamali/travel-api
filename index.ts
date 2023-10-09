@@ -1,8 +1,10 @@
 import express, { Express, NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+
 import { tripRoutes } from './src/api/trips';
 import { datasource } from './src/configs/datasource';
+import { destinationRoutes } from './src/api/destinations';
 
 dotenv.config();
 
@@ -32,6 +34,7 @@ app.get('/', (req, res) => {
 
 /* Routes */
 app.use('/trips', tripRoutes);
+app.use('/destinations', destinationRoutes);
 
 /* Error handler middleware */
 interface ErrorWithStatus extends Error {

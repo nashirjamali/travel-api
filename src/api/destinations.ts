@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { createDestination } from '../services/destinations';
 
-export const tripRoutes = Router();
+export const destinationRoutes = Router();
 
-tripRoutes.post('/', createDestination);
+destinationRoutes.post('/', createDestination);
